@@ -1,0 +1,239 @@
+@import "tailwindcss";
+
+/* ── PlayStation Design Tokens ── */
+:root {
+  /* Brand */
+  --ps-primary:            #0070d1;
+  --ps-primary-pressed:    #0064b7;
+  --ps-primary-active:     #004d8d;
+  --ps-commerce:           #d53b00;
+  --ps-commerce-pressed:   #aa2f00;
+
+  /* Canvas */
+  --ps-canvas-dark:        #000000;
+  --ps-canvas-light:       #ffffff;
+  --ps-surface-dark-elev:  #121314;
+  --ps-surface-dark-card:  #181818;
+  --ps-surface-soft:       #f3f3f3;
+  --ps-surface-card:       #f5f7fa;
+  --ps-surface-filter:     rgba(245,247,250,0.3);
+
+  /* Hairlines */
+  --ps-hairline-light:     #f3f3f3;
+  --ps-hairline-dark:      rgba(229,229,229,0.2);
+
+  /* Text – light canvas */
+  --ps-ink:                #000000;
+  --ps-ink-deep:           #121314;
+  --ps-body-light:         rgba(0,0,0,0.6);
+  --ps-mute-light:         #6b6b6b;
+  --ps-ash-light:          #cccccc;
+
+  /* Text – dark canvas */
+  --ps-on-dark:            #ffffff;
+  --ps-body-dark:          rgba(255,255,255,0.7);
+  --ps-on-dark-mute:       #cccccc;
+  --ps-mute-dark:          rgba(229,229,229,0.55);
+
+  /* Semantic */
+  --ps-warning:            #c81b3a;
+  --ps-link-light:         #0064b7;
+  --ps-link-dark:          #53b1ff;
+
+  /* Radius */
+  --rounded-sm:  4px;
+  --rounded-md:  8px;
+  --rounded-lg:  16px;
+  --rounded-full: 9999px;
+
+  /* Spacing */
+  --spacing-xs:  8px;
+  --spacing-sm:  12px;
+  --spacing-md:  16px;
+  --spacing-lg:  24px;
+  --spacing-xl:  32px;
+  --spacing-xxl: 48px;
+  --spacing-section: 96px;
+
+  /* PS Plus Gold */
+  --ps-gold-start: #ffce21;
+  --ps-gold-mid:   #f5a623;
+  --ps-gold-end:   #ee8e00;
+}
+
+/* ── Base ── */
+*, *::before, *::after { box-sizing: border-box; }
+
+body {
+  font-family: 'Inter', 'Arial', 'Helvetica', sans-serif;
+  font-size: 18px;
+  font-weight: 400;
+  line-height: 1.5;
+  background: var(--ps-canvas-light);
+  color: var(--ps-ink);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* ── PlayStation Typography Utilities ── */
+.ps-display-xl {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 54px; font-weight: 300; line-height: 1.25; letter-spacing: -0.1px;
+}
+.ps-display-lg {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 44px; font-weight: 300; line-height: 1.25; letter-spacing: 0.1px;
+}
+.ps-display-md {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 35px; font-weight: 300; line-height: 1.25; letter-spacing: 0;
+}
+.ps-heading-xl {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 28px; font-weight: 300; line-height: 1.25; letter-spacing: 0.1px;
+}
+.ps-heading-lg {
+  font-family: 'Roboto', 'Arial', sans-serif;
+  font-size: 22px; font-weight: 300; line-height: 1.25; letter-spacing: 0.1px;
+}
+.ps-heading-md {
+  font-size: 18px; font-weight: 600; line-height: 1;
+}
+.ps-body-md  { font-size: 18px; font-weight: 400; line-height: 1.5; letter-spacing: 0.1px; }
+.ps-body-strong { font-size: 18px; font-weight: 500; line-height: 1.25; letter-spacing: 0.4px; }
+.ps-body-sm  { font-size: 16px; font-weight: 400; line-height: 1.5; }
+.ps-caption-md { font-size: 14px; font-weight: 400; line-height: 1.5; }
+.ps-caption-sm { font-size: 12px; font-weight: 500; line-height: 1.5; }
+.ps-button-lg { font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: 0.45px; }
+.ps-button-md { font-size: 14px; font-weight: 700; line-height: 1.25; letter-spacing: 0.324px; }
+
+/* ── PlayStation Button Utilities ── */
+.ps-btn-primary {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--ps-primary);
+  color: #fff;
+  border: none;
+  border-radius: var(--rounded-full);
+  padding: 12px 28px;
+  height: 48px;
+  font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: 0.45px;
+  cursor: pointer; transition: background 0.15s;
+  white-space: nowrap;
+}
+.ps-btn-primary:hover   { background: var(--ps-primary-pressed); }
+.ps-btn-primary:active  { background: var(--ps-primary-active); }
+.ps-btn-primary:disabled { background: var(--ps-surface-soft); color: var(--ps-ash-light); cursor: not-allowed; }
+
+.ps-btn-commerce {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: var(--ps-commerce);
+  color: #fff;
+  border: none;
+  border-radius: var(--rounded-full);
+  padding: 12px 28px;
+  height: 48px;
+  font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: 0.45px;
+  cursor: pointer; transition: background 0.15s;
+  white-space: nowrap;
+}
+.ps-btn-commerce:hover  { background: var(--ps-commerce-pressed); }
+.ps-btn-commerce:disabled { background: var(--ps-surface-soft); color: var(--ps-ash-light); cursor: not-allowed; }
+
+.ps-btn-secondary-dark {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: transparent;
+  color: var(--ps-on-dark);
+  border: 1px solid var(--ps-hairline-dark);
+  border-radius: var(--rounded-full);
+  padding: 12px 28px;
+  height: 48px;
+  font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: 0.45px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.ps-btn-secondary-dark:hover { border-color: rgba(255,255,255,0.4); background: rgba(255,255,255,0.06); }
+
+.ps-btn-secondary-light {
+  display: inline-flex; align-items: center; justify-content: center; gap: 8px;
+  background: transparent;
+  color: var(--ps-ink);
+  border: 1px solid var(--ps-ash-light);
+  border-radius: var(--rounded-full);
+  padding: 12px 28px;
+  height: 48px;
+  font-size: 18px; font-weight: 700; line-height: 1.25; letter-spacing: 0.45px;
+  cursor: pointer; transition: border-color 0.15s, background 0.15s;
+  white-space: nowrap;
+}
+.ps-btn-secondary-light:hover { border-color: #999; background: var(--ps-surface-soft); }
+
+/* ── Input & Pill Chip ── */
+.ps-input {
+  width: 100%;
+  background: var(--ps-canvas-light);
+  color: var(--ps-ink);
+  border: 1px solid var(--ps-ash-light);
+  border-radius: var(--rounded-sm);
+  padding: 12px 16px;
+  height: 48px;
+  font-size: 18px; font-weight: 400; line-height: 1.5;
+  outline: none; transition: border-color 0.15s;
+}
+.ps-input:focus { border: 2px solid var(--ps-primary); }
+
+.ps-input-sm {
+  width: 100%;
+  background: var(--ps-canvas-light);
+  color: var(--ps-ink);
+  border: 1px solid var(--ps-ash-light);
+  border-radius: var(--rounded-sm);
+  padding: 7px 10px;
+  font-size: 14px; font-weight: 400;
+  outline: none; transition: border-color 0.15s;
+}
+.ps-input-sm:focus { border: 2px solid var(--ps-primary); }
+
+.ps-select-sm {
+  background: var(--ps-canvas-light);
+  color: var(--ps-ink);
+  border: 1px solid var(--ps-ash-light);
+  border-radius: var(--rounded-sm);
+  padding: 4px 8px;
+  font-size: 12px; font-weight: 400;
+  outline: none; cursor: pointer;
+}
+.ps-select-sm:focus { border: 2px solid var(--ps-primary); }
+
+/* ── Card ── */
+.ps-card {
+  background: var(--ps-surface-card);
+  border-radius: var(--rounded-md);
+  padding: var(--spacing-lg);
+}
+
+.ps-card-dark {
+  background: var(--ps-surface-dark-card);
+  border-radius: var(--rounded-md);
+  padding: var(--spacing-lg);
+}
+
+/* ── Inline table cell editing ── */
+.cell-input {
+  width: 100%;
+  background: transparent;
+  outline: none;
+  font-size: 13px;
+  line-height: 1.4;
+  padding: 2px 4px;
+  border-radius: var(--rounded-sm);
+  border: 1px solid transparent;
+}
+.cell-input:focus {
+  border-color: var(--ps-primary);
+  background: white;
+  box-shadow: 0 0 0 2px rgba(0,112,209,0.12);
+}
+.cell-input:hover:not(:focus) {
+  border-color: var(--ps-ash-light);
+  background: var(--ps-surface-card);
+}
