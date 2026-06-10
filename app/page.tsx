@@ -13,21 +13,29 @@ export default function Dashboard() {
   const [projects, setProjects] = useState<Project[]>([])
   const [week, setWeek] = useState<Week | null>(null)
   const [loading, setLoading] = useState(true)
+  const [loadError, setLoadError] = useState(false)
   const [downloading, setDownloading] = useState(false)
 
-  useEffect(() => {
-    supabase
+  async function fetchWeeks() {
+    setLoading(true)
+    setLoadError(false)
+    const { data, error } = await supabase
       .from('weeks')
       .select('*')
       .order('start_date', { ascending: false })
-      .then(({ data }) => {
-        if (data && data.length > 0) {
-          setWeeks(data as Week[])
-          setSelectedWeekId(data[0].id)
-        }
-        setLoading(false)
-      })
-  }, [])
+    if (error || !data) {
+      setLoadError(true)
+      setLoading(false)
+      return
+    }
+    if (data.length > 0) {
+      setWeeks(data as Week[])
+      setSelectedWeekId(data[0].id)
+    }
+    setLoading(false)
+  }
+
+  useEffect(() => { fetchWeeks() }, [])
 
   useEffect(() => {
     if (!selectedWeekId) return
@@ -65,6 +73,22 @@ export default function Dashboard() {
     } finally {
       setDownloading(false)
     }
+  }
+
+  if (loadError) {
+    return (
+      <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', minHeight: '100vh', background: 'var(--ps-canvas-dark)', gap: 20 }}>
+        <span style={{ color: 'var(--ps-body-dark)', fontSize: 16 }}>데이터베이스 연결에 실패했습니다.</span>
+        <span style={{ color: 'var(--ps-mute-dark)', fontSize: 13 }}>잠시 후 다시 시도해주세요.</span>
+        <button
+          onClick={fetchWeeks}
+          className="ps-btn-primary"
+          style={{ marginTop: 8 }}
+        >
+          다시 시도
+        </button>
+      </div>
+    )
   }
 
   if (loading) {
